@@ -1,6 +1,6 @@
 // ✅ Configura tus credenciales de Supabase
-const SUPABASE_URL = "https://TU-PROJECT-ID.supabase.co";        // <-- cambia esto
-const SUPABASE_ANON_KEY = "TU_ANON_PUBLIC_KEY";                  // <-- cambia esto
+const SUPABASE_URL = 'https://vocjaerbdjsmqvwmvkud.supabase.co';  
+const SUPABASE_ANON_KEY = 'sb_publishable_N1MKtHu9yS1lSNvaTwlYog_u6dgfG2S';  
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -243,3 +243,4 @@ function renderChart(labels, values) {
     }
   });
 }
+
