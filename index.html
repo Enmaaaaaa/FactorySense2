@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>FactorySense – Dashboard IoT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js para gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Supabase JS v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>FactorySense – Monitoreo IoT</h1>
+    <p class="subtitle">MVP conectado a Supabase (PostgreSQL)</p>
+  </header>
+
+  <main class="container">
+    <!-- Panel de sensores -->
+    <section class="card">
+      <h2>Sensores registrados</h2>
+      <p class="card-desc">Selecciona un sensor para consultar su telemetría.</p>
+
+      <div class="sensor-select">
+        <label for="sensorSelect">Sensor:</label>
+        <select id="sensorSelect"></select>
+        <button id="btnCargarDatos">Cargar datos</button>
+      </div>
+
+      <table class="table" id="tablaSensores">
+        <thead>
+          <tr>
+            <th>Nombre / HW</th>
+            <th>Métrica</th>
+            <th>Unidad</th>
+            <th>Máquina</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llena desde JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Panel de telemetría + gráfico -->
+    <section class="card">
+      <h2>Telemetría del sensor seleccionado</h2>
+      <p class="card-desc">Últimas lecturas registradas en la tabla <code>telemetry</code>.</p>
+
+      <div class="actions-row">
+        <button id="btnSimularLectura">➕ Insertar lectura simulada</button>
+        <span id="statusMessage" class="status"></span>
+      </div>
+
+      <div class="telemetry-layout">
+        <div class="telemetry-table-container">
+          <table class="table" id="tablaTelemetry">
+            <thead>
+              <tr>
+                <th>Fecha/Hora</th>
+                <th>Valor</th>
+                <th>Metadata</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Se llena desde JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="telemetryChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel de alertas -->
+    <section class="card">
+      <h2>Alertas recientes</h2>
+      <p class="card-desc">Datos de la tabla <code>alerts</code> generados por triggers en Supabase.</p>
+
+      <table class="table" id="tablaAlerts">
+        <thead>
+          <tr>
+            <th>Fecha/Hora</th>
+            <th>Sensor</th>
+            <th>Valor</th>
+            <th>Umbral</th>
+            <th>Severidad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llena desde JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>FactorySense MVP – Supabase + Azure Static Web Apps + HTML/CSS/JS</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
